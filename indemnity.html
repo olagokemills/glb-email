@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+    <meta charset="utf-8"> <!-- utf-8 works for most cases -->
+    <meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
+    <meta name="x-apple-disable-message-reformatting">  <!-- Disable auto-scale in iOS 10 Mail entirely -->
+    <meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no"> <!-- Tell iOS not to automatically link certain text strings. -->
+    <title>Soft Token Request</title> <!-- The title tag shows in email notifications, like Android 4.4. -->
+
+    <!-- Web Font / @font-face : BEGIN -->
+    <!-- NOTE: If web fonts are not required, lines 10 - 27 can be safely removed. -->
+
+    <!-- Desktop Outlook chokes on web font references and defaults to Times New Roman, so we force a safe fallback font. -->
+    <!--[if mso]>
+        <style>
+            * {
+                font-family: sans-serif !important;
+            }
+        </style>
+    <![endif]-->
+
+    <!-- All other clients get the webfont reference; some will render the font and others will silently fail to the fallbacks. More on that here: http://stylecampaign.com/blog/2015/02/webfont-support-in-email/ -->
+    <!--[if !mso]><!-->
+    <!-- insert web font reference, eg: <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'> -->
+    <!--<![endif]-->
+
+    <!-- Web Font / @font-face : END -->
+
+    <!-- CSS Reset : BEGIN -->
+    <style>
+
+        /* What it does: Remove spaces around the email design added by some email clients. */
+        /* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
+        @media screen {
+            @font-face {
+            font-family: "Campton Bold";
+            src: url("https://res.cloudinary.com/globusbank/raw/upload/v1583146875/EmailAsset/fonts/Campton_Bold_j9ls8k.otf");
+            }
+
+    }
+    @font-face {
+            font-family: "Campton Bold";
+            src: url("https://res.cloudinary.com/globusbank/raw/upload/v1583146875/EmailAsset/fonts/Campton_Bold_j9ls8k.otf");
+            }
+
+            @font-face {
+                font-family: "Campton Medium";
+                src: url("https://res.cloudinary.com/globusbank/raw/upload/v1583146876/EmailAsset/fonts/Campton_Medium_p8kbew.otf");
+            }
+            @font-face {
+                font-family: "Campton Light";
+                src: url("https://res.cloudinary.com/globusbank/raw/upload/v1583146876/EmailAsset/fonts/Campton_Light_nh94cp.otf");
+            }
+        html,
+        body {
+            margin: 0 auto !important;
+            padding: 0 !important;
+            height: 100% !important;
+            width: 100% !important;
+            font-family: "Campton Light";
+        }
+        
+
+        /* What it does: Stops email clients resizing small text. */
+        * {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+        em{
+            color: #003366;
+        }
+
+        /* What it does: Centers email on Android 4.4 */
+        div[style*="margin: 16px 0"] {
+            margin: 0 !important;
+        }
+
+        /* What it does: forces Samsung Android mail clients to use the entire viewport */
+        #MessageViewBody, #MessageWebViewDiv{
+            width: 100% !important;
+        }
+
+        /* What it does: Stops Outlook from adding extra spacing to tables. */
+        table,
+        td {
+            mso-table-lspace: 0pt !important;
+            mso-table-rspace: 0pt !important;
+        }
+
+        /* What it does: Fixes webkit padding issue. */
+        table {
+            border-spacing: 0 !important;
+            border-collapse: collapse !important;
+            table-layout: fixed !important;
+            margin: 0 auto !important;
+            background-color: #fff;
+        }
+        td{
+            padding-bottom: 10px;
+            font-family: "Campton Medium";
+            
+        }
+
+        /* What it does: Uses a better rendering method when resizing images in IE. */
+        img {
+            -ms-interpolation-mode:bicubic;
+        }
+
+        /* What it does: Prevents Windows 10 Mail from underlining links despite inline CSS. Styles for underlined links should be inline. */
+        a {
+            text-decoration: none;
+        }
+
+        /* What it does: A work-around for email clients meddling in triggered links. */
+        a[x-apple-data-detectors],  /* iOS */
+        .unstyle-auto-detected-links a,
+        .aBn {
+            border-bottom: 0 !important;
+            cursor: default !important;
+            color: inherit !important;
+            text-decoration: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+        }
+
+        /* What it does: Prevents Gmail from displaying a download button on large, non-linked images. */
+        .a6S {
+            display: none !important;
+            opacity: 0.01 !important;
+        }
+
+        /* What it does: Prevents Gmail from changing the text color in conversation threads. */
+        .im {
+            color: inherit !important;
+        }
+
+        /* If the above doesn't work, add a .g-img class to any image in question. */
+        img.g-img + div {
+            display: none !important;
+        }
+
+        /* What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  */
+        /* Create one of these media queries for each additional viewport size you'd like to fix */
+
+        /* iPhone 4, 4S, 5, 5S, 5C, and 5SE */
+        @media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
+            u ~ div .email-container {
+                min-width: 320px !important;
+            }
+        }
+        /* iPhone 6, 6S, 7, 8, and X */
+        @media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
+            u ~ div .email-container {
+                min-width: 375px !important;
+            }
+        }
+        /* iPhone 6+, 7+, and 8+ */
+        @media only screen and (min-device-width: 414px) {
+            u ~ div .email-container {
+                min-width: 414px !important;
+            }
+        }
+
+    </style>
+
+    <!-- What it does: Makes background images in 72ppi Outlook render at correct size. -->
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+    </xml>
+    <![endif]-->
+
+    <!-- CSS Reset : END -->
+</head>               
+<body>
+    <body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: grey;">
+        <center style="width: 100%; background-color: grey; margin-top: 30px;">
+                <!--[if mso | IE]>
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #222222;">
+    <tr>
+    <td>
+    <![endif]-->
+
+          <!-- Create white space after the desired preview text so email clients don’t pull other distracting text into the inbox preview. Extend as necessary. -->
+        <!-- Preview Text Spacing Hack : BEGIN -->
+        <div style="display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
+	        &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+        </div>
+        <!-- Preview Text Spacing Hack : END -->
+        <div style="max-width: 600px; margin: 0 auto; border: 1px solid #70707054; padding: 50px; background-color: #fff;" class="email-container">
+            <!--[if mso]>
+            <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="600">
+            <tr>
+            <td>
+            <![endif]-->
+            
+	        <!-- Email Body : BEGIN -->
+	        <table align="" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;background-color: #fff;">
+                
+                <tr style="margin-top: 50px;">
+                    <td style="background-color: #ffffff;">
+                        <img
+                        src="https://res.cloudinary.com/globusbank/image/upload/v1573143692/EmailAsset/acct_Logo_nlw7cy.svg"
+                        style="display:block; line-height:0px; font-size:0px; border:0px;padding-right:0px;margin-bottom:30px"
+                      />
+                    </td>
+                </tr>
+                <tr style="border-top: 1px dashed #70707054; border-bottom: 1px dashed #70707054;width: 116%;
+                display: block;
+                margin-left: -50px;">
+                    <td><h2 style="font-size:24px;font-family:Campton Bold;line-height:33px;color:#003366; margin-left: 48px; margin-top: 40px;">Soft Token Request</h2></td>
+                </tr>
+                <tr>
+                    <td><h3 style="font-size:18px;line-height:25px;color: #101010; font-family: 'Campton Medium';">Dear Esteemed Customer,</h3></td>
+                </tr>
+                <tr>
+                    <td>
+                        <p style="font-size: 14px;line-height: 24px; color: #707070;">This Indemnity is given this Day <em>(Insert date and time)</em> by me <em>(Insert customer’s full Name)</em> with Account Number <em>(insert account Number).</em></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table>
+                            <tr>
+                                <td style="vertical-align: top;">
+                                    <img src="https://res.cloudinary.com/globusbank/image/upload/v1583166171/EmailAsset/figures/1_pspnhw.png">&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;</td>
+                                
+                                <td>
+                                    <span style="font-family: 'Campton Light';font-size: 14px;line-height: 24px;color: #707070;">
+                                        The terms and conditions contained herein apply to and regulate your use of the Globus Bank soft token (Entry) for confirmation of your transaction as provided by Globus Bank Limited (referred to as “the Bank” or “we” or “us” or “Globus Bank”). By undergoing this activation process to use the Globus Bank Soft token services, you accept and agree to these terms and conditions. If you do not accept these terms and conditions, kindly make a request for you to be disabled on same.
+                                    </span>
+                                </td>
+                            </tr>
+                      </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table>
+                            <tr>
+                                <td style="vertical-align: top;">
+                                    <img src="https://res.cloudinary.com/globusbank/image/upload/v1583166171/EmailAsset/figures/2_j2qti0.png"/> &nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp; </td>
+                                <td>
+                                    <span style="font-family: 'Campton Light';font-size: 14px;line-height: 24px;color: #707070;">
+                                        The Globus Bank Soft token services is provided as part of the Bank’s electronic banking services and accordingly:
+                                        <ul style="padding: 0; list-style-type: none; color: #707070;">
+                                            <li style="margin-bottom: 20px;" class="list-item-first">a) These terms are an addition to and shall be read in accordance with our customer’s terms and conditions, our privacy notice published on our website or any other documents forming part of our banking agreement (and any reference to these terms).</li>
+                                            <li style="margin-bottom: 20px;">b) The meaning of keywords which apply to these services referred to in these terms are explained at the end of these terms.</li>
+                                            <li style="" class="list-item-last"> c) In the event of any conflict or inconsistency, these terms shall prevail over the customers terms and to the extent of such conflict or inconsistency.</li>
+                                        </ul>
+                                    </span>
+                                </td>
+                            </tr>
+                      </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table>
+                            <tr>
+                                <td style="vertical-align: top;">
+                                    <img src="https://res.cloudinary.com/globusbank/image/upload/v1583166171/EmailAsset/figures/3_v3o7gk.png" />
+                                    &nbsp;&nbsp;&nbsp; </td>
+                                <td>
+                                    <span style="font-family: 'Campton Light';font-size: 14px;line-height: 24px;color: #707070;">
+                                        You acknowledge and agree that in order to use the Globus Soft token, you will be required to undergo a registration process by downloading Entrust from the App store. The Bank will subsequently advise the customer of the activation code via mail to complete the setup.
+                                    </span>
+                                </td>
+                            </tr>
+                      </table>
+                    </td>
+                
+                </tr>
+                <tr>
+                    <td>
+                        <table>
+                            <tr>
+                                <td style="vertical-align: top;">
+                                    <img src="https://res.cloudinary.com/globusbank/image/upload/v1583166171/EmailAsset/figures/4_zmqwho.png" />
+                               &nbsp;&nbsp;&nbsp; </td>
+                                
+                                <td>
+                                    <span style="font-family: 'Campton Light';font-size: 14px;line-height: 24px;color: #707070;">
+                                        If you inform us that the security of your mobile App/Internet Banking or Soft token has been compromised or that the electronic banking services is lost or stolen, 
+                                        we may require you to change the login pin to the soft token & password to your app
+                                    </span>
+                                </td>
+                            </tr>
+                      </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>
+                            <img src="https://res.cloudinary.com/globusbank/image/upload/v1583166171/EmailAsset/figures/5_kkkhko.png" />
+                        </span>
+                        <span style="font-family: 'Campton Light';font-size: 14px;line-height: 24px;color: #707070;">
+                             <span>You are responsible for: 
+                                <ul style="padding: 0;list-style-type: none;color:#707070;font-family:'Campton Light';">
+                                <li style="margin-left: 25px;" class="list-item-first"> a) The login pin to access the Soft token (Entrust).</li>
+                                <li style="margin-left:25px;">b) The security of your mobile device</li>
+                                <li style="margin-left:25px;" class="list-item-last">c) In the event of any conflict.</li>
+                                </ul>
+                            </span>
+                        </span>
+                       
+                     </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table>
+                            <tr>
+                                <td style="vertical-align: top;">
+                                    <img src="https://res.cloudinary.com/globusbank/image/upload/v1583166171/EmailAsset/figures/6_bmagfe.png"/>
+                                    &nbsp;&nbsp;&nbsp; </td>
+                                <td>
+                                    <span style="font-family: 'Campton Light';font-size: 14px;line-height: 24px;color: #707070;">
+                                        In addition to and without prejudice to the disclaimers & exclusions of liability in the customer’s tiers, 
+                                        <ul style="padding: 0;color: #707070;list-style-type: none;">
+                                            <li style="margin-bottom: 20px;" class="list-item-first">a) We do not represent or warrant that the Globus soft token (Entrust) services will always be accessible or function with any electronic equipment, software, infrastructure or other electronic banking services that we may offer from time to time.</li>
+                                            <li style="margin-bottom: 20px;">b) Subject to all applicable laws, we are not liable for any loss you incur in connection with use of the Globus Bank Soft token.</li>
+                                            <li style="margin-bottom: 20px;" class="list-item-last">c) You hereby indemnify and keep us fully indemnified against any loss, claim, action, litigation, award and damages which we may incur in connection with any improper use of the Globus Bank Soft token (Entrust)</li>
+                                        </ul>
+                                    </span>
+                                </td>
+                            </tr>
+                      </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-size: 14px; line-height:24px; color:#707070; font-family: 'Campton Light';">
+                        <strong>Globus Soft Token (Entrust): </strong><br />
+                        It is an app powered by Entrust for generation of one time password for second factor authentication/confirmation of your transaction.
+                        <br />
+                        <br />
+                    </td>
+                </tr>                
+                
+            </table>
+        </div>
+        <div style=" max-width: 700px;margin-bottom: 50px;">
+            <center style="background-color: #E2ECF5; padding: 40px; font-family: 'Campton Light';font-weight: bolder; font-size: 15px; line-height: 20px; color: #003366;">
+                <p style="margin: 0; text-align: center;">Thank you for choosing Globus Bank.</p>
+            </center>
+
+                <div style="height: auto; background-image:url('https://res.cloudinary.com/globusbank/image/upload/v1583166200/EmailAsset/figures/girl_nfx1w7.png'); background-color: #003366; color: #fff; text-align: left;padding: 20px; background-repeat: round;">
+                    <ul style="list-style-type: none;">
+                        <li style="margin-bottom: 15px; font-size: 24px;">Contact Us</li>
+                        <li style="margin-bottom: 15px;"><img
+                            src="https://res.cloudinary.com/globusbank/image/upload/v1583151902/EmailAsset/fonts/Group_4532_b5z6db.svg"
+                            style="display:block; line-height:0px; font-size:0px; border:0px; display: inline-block;"
+                            width="20px"
+                        /> &nbsp; 01 225 9000, 01 225 9001</li>
+                        <li style="margin-bottom: 15px;">
+                            <span>
+                            <img
+                            src="https://res.cloudinary.com/globusbank/image/upload/v1583151902/EmailAsset/fonts/Group_4531_orcyr8.svg"
+                            style="display:block; line-height:0px; font-size:0px; border:0px; display: inline-block;"
+                            width="20px"
+                        />
+                        </span>
+                        &nbsp;  
+                        <span>
+                            contactcenter@globusbank.com
+                        </span>
+                        </li>
+                    </ul>
+                    <hr style="
+                    color:
+                    rgba(112,112,122, 0.6);
+                    margin-left: -20px;
+                    width: 500px;" />
+                    <p style="margin-left: 40px;">@ 2020 Globus Bank. </p>
+                </div>
+                    
+           </div>
+        </center> 
+    </body>  
+
+</body>  
+</html>
