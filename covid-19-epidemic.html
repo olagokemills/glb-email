@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+    <meta charset="utf-8"> <!-- utf-8 works for most cases -->
+    <meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
+    <meta name="x-apple-disable-message-reformatting">  <!-- Disable auto-scale in iOS 10 Mail entirely -->
+    <meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no"> <!-- Tell iOS not to automatically link certain text strings. -->
+    <title>Covid-19 Epidemic</title> <!-- The title tag shows in email notifications, like Android 4.4. -->
+
+    <!-- Web Font / @font-face : BEGIN -->
+    <!-- NOTE: If web fonts are not required, lines 10 - 27 can be safely removed. -->
+
+    <!-- Desktop Outlook chokes on web font references and defaults to Times New Roman, so we force a safe fallback font. -->
+    <!--[if mso]>
+        <style>
+            * {
+                font-family: sans-serif !important;
+            }
+        </style>
+    <![endif]-->
+
+    <!-- All other clients get the webfont reference; some will render the font and others will silently fail to the fallbacks. More on that here: http://stylecampaign.com/blog/2015/02/webfont-support-in-email/ -->
+    <!--[if !mso]><!-->
+    <!-- insert web font reference, eg: <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'> -->
+    <!--<![endif]-->
+
+    <!-- Web Font / @font-face : END -->
+
+    <!-- CSS Reset : BEGIN -->
+    <style>
+
+        /* What it does: Remove spaces around the email design added by some email clients. */
+        /* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
+        @media screen {
+            @font-face {
+            font-family: "Campton Bold";
+            src: url("https://res.cloudinary.com/globusbank/raw/upload/v1583146875/EmailAsset/fonts/Campton_Bold_j9ls8k.otf");
+            }
+
+    }
+    @font-face {
+            font-family: "Campton Bold";
+            src: url("https://res.cloudinary.com/globusbank/raw/upload/v1583146875/EmailAsset/fonts/Campton_Bold_j9ls8k.otf");
+            }
+
+            @font-face {
+                font-family: "Campton Medium";
+                src: url("https://res.cloudinary.com/globusbank/raw/upload/v1583146876/EmailAsset/fonts/Campton_Medium_p8kbew.otf");
+            }
+            @font-face {
+                font-family: "Campton Light";
+                src: url("https://res.cloudinary.com/globusbank/raw/upload/v1584704174/EmailAsset/fonts/Campton-Book_ap9eyg.otf");
+            }
+            @font-face{
+                font-family: "Campton ExtraBold";
+                src: url("https://res.cloudinary.com/globusbank/raw/upload/v1583146876/EmailAsset/fonts/Campton_ExtraBold_rxwiwc.otf");
+            }
+            @font-face{
+                font-family:"OpenSans SemiBold";
+                src: url("https://res.cloudinary.com/globusbank/raw/upload/v1584702271/EmailAsset/fonts/OpenSans-SemiBold_d6griy.ttf")
+            }
+            @font-face{
+                font-family:"Campton SemiBold";
+                src: url("https://res.cloudinary.com/globusbank/raw/upload/v1583146876/EmailAsset/fonts/Campton_SemiBold_dimdq0.otf")
+            }
+        html,
+        body {
+            margin: 0 auto !important;
+            padding: 0 !important;
+            height: 100% !important;
+            width: 100% !important;
+            font-family: "Campton Light";
+        }
+        
+
+        /* What it does: Stops email clients resizing small text. */
+        * {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+        em{
+            color: #003366;
+        }
+
+        /* What it does: Centers email on Android 4.4 */
+        div[style*="margin: 16px 0"] {
+            margin: 0 !important;
+        }
+
+        /* What it does: forces Samsung Android mail clients to use the entire viewport */
+        #MessageViewBody, #MessageWebViewDiv{
+            width: 100% !important;
+        }
+
+        /* What it does: Stops Outlook from adding extra spacing to tables. */
+        table,
+        td {
+            mso-table-lspace: 0pt !important;
+            mso-table-rspace: 0pt !important;
+        }
+
+        /* What it does: Fixes webkit padding issue. */
+        table {
+            border-spacing: 0 !important;
+            border-collapse: collapse !important;
+            table-layout: fixed !important;
+            margin: 0 auto !important;
+            background-color: #fff;
+        }
+        td{
+            padding-bottom: 10px;
+            font-family: "Campton Medium";
+            
+        }
+
+        /* What it does: Uses a better rendering method when resizing images in IE. */
+        img {
+            -ms-interpolation-mode:bicubic;
+        }
+
+        /* What it does: Prevents Windows 10 Mail from underlining links despite inline CSS. Styles for underlined links should be inline. */
+        a {
+            text-decoration: none;
+        }
+
+        /* What it does: A work-around for email clients meddling in triggered links. */
+        a[x-apple-data-detectors],  /* iOS */
+        .unstyle-auto-detected-links a,
+        .aBn {
+            border-bottom: 0 !important;
+            cursor: default !important;
+            color: inherit !important;
+            text-decoration: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+        }
+
+        /* What it does: Prevents Gmail from displaying a download button on large, non-linked images. */
+        .a6S {
+            display: none !important;
+            opacity: 0.01 !important;
+        }
+
+        /* What it does: Prevents Gmail from changing the text color in conversation threads. */
+        .im {
+            color: inherit !important;
+        }
+
+        /* If the above doesn't work, add a .g-img class to any image in question. */
+        img.g-img + div {
+            display: none !important;
+        }
+
+        /* What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  */
+        /* Create one of these media queries for each additional viewport size you'd like to fix */
+
+        /* iPhone 4, 4S, 5, 5S, 5C, and 5SE */
+        @media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
+            u ~ div .email-container {
+                min-width: 320px !important;
+            }
+        }
+        /* iPhone 6, 6S, 7, 8, and X */
+        @media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
+            u ~ div .email-container {
+                min-width: 375px !important;
+            }
+        }
+        /* iPhone 6+, 7+, and 8+ */
+        @media only screen and (min-device-width: 414px) {
+            u ~ div .email-container {
+                min-width: 414px !important;
+            }
+        }
+
+    </style>
+
+    <!-- What it does: Makes background images in 72ppi Outlook render at correct size. -->
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+    </xml>
+    <![endif]-->
+
+    <!-- CSS Reset : END -->
+</head>               
+<body>
+    <body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: grey;">
+        <center style="width: 100%; background-color: grey; margin-top: 30px;">
+                <!--[if mso | IE]>
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #222222;">
+    <tr>
+    <td>
+    <![endif]-->
+
+          <!-- Create white space after the desired preview text so email clients don’t pull other distracting text into the inbox preview. Extend as necessary. -->
+        <!-- Preview Text Spacing Hack : BEGIN -->
+        <div style="display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
+	        &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+        </div>
+        <!-- Preview Text Spacing Hack : END -->
+        <div style="max-width: 600px; margin: 0 auto; border: 1px solid #70707054; padding: 50px; background-color: #fff;" class="email-container">
+            
+            <!--[if mso]>
+            <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="600">
+            <tr>
+            <td>
+            <![endif]-->
+	        <!-- Email Body : BEGIN -->
+	        <table align="" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;background-color: #fff;">
+                
+                <tr style="margin-top: 50px;">
+                    <td style="background-color: #ffffff;">
+                        <img
+                        src="https://res.cloudinary.com/globusbank/image/upload/v1573143692/EmailAsset/acct_Logo_nlw7cy.svg"
+                        style="display:block; line-height:0px; font-size:0px; border:0px;padding-right:0px;margin-bottom:30px; width: 200px;"
+                      />
+                    </td>
+                </tr>
+                <tr style="width: 117%;
+                display: block;
+                margin-left: -50px;">
+                    <td style="background-image: url('https://res.cloudinary.com/globusbank/image/upload/v1584696348/EmailAsset/Group_4588_2x_q4msjz.png');
+                            height: 120px;
+                            width: 700px;
+                            background-repeat: round;">
+                        <p style="color:#FFFFFF;
+                                font-family: 'Campton ExtraBold';
+                                font-size: 28px;
+                                line-height: 36px;
+                                letter-spacing: 0.78px;
+                                text-align: left;
+                                margin-left: 50px;">
+                        We are here to support you and your business during the COVID-19 epidemic</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p style="
+                        text-align: left;
+                        font-family:'Campton Light';
+                        font-size: 14px;
+                        line-height: 24px;
+                        letter-spacing: 0;
+                        color: #707070;
+                        margin-top: 44px;
+                        margin-bottom: 0;">
+                            With COVID-19 being top-priority worldwide, I wanted to personally reach out to you, our esteemed customers, that Globus Bank remains committed to supporting you and your business. In order to achieve this, we want to ensure that banking is made quick, safe and convenient for you at this time.
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p style="
+                        text-align: left;
+                        font-family:'Campton Light';
+                        font-size: 14px;
+                        line-height: 24px;
+                        letter-spacing: 0;
+                        color: #707070;">
+                            All our offices remain open to ensure that we meet your needs and serve you as best as we can. In addition, our 24/7 online banking affords you the opportunity to bank at the comfort and convenience of your home: 
+                            through our mobile banking app <span style="color: #003366;">(Globus Mobile),</span> USSD Code <span  style="color: #003366;">(*989#)</span> and the Web <span  style="color: #003366;">(www.globusbank.com)</span>.
+                             Our contact centre is readily available for you to make enquiries and complaints and our ATMs are fully operational for withdrawals or to make any other transactions. We are readily available to support your business banking needs always.
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p style="
+                        text-align: left;
+                        font-family:'Campton Light';
+                        font-size: 14px;
+                        line-height: 24px;
+                        letter-spacing: 0;
+                        color: #707070;">
+                            In our bid to prevent and mitigate the spread of COVID-19, I want to guarantee you that we have taken numerous precautions to keep our offices clean and our staff 
+                            and esteemed customers safe through the placement of alcohol-based hand sanitizers at strategic locations of our offices and ensuring they are being used by staff
+                             and customers that walk into the bank as well as through the use of temperature testers to detect any form of fever from anyone who walks into our offices.
+                              As emphasized, your well-being and that of our staff is our top priority.
+                            </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div style="border:1px solid #fff; background-color:#E2ECF5; width: 110%; margin-left: -5%;border-radius: 5px 5px 0 0;">
+                            <h4 style="font-family: 'OpenSans SemiBold';color: #003366; font-size: 14px; line-height: 17px;margin-left: 5%;">Access your money easily, anytime and anywhere</h4>
+                        </div>
+                        <p style="
+                        text-align: left;
+                        font-family:'Campton Light';
+                        font-size: 14px;
+                        line-height: 24px;
+                        letter-spacing: 0;
+                        color: #707070;">
+                           If you have not downloaded or signed up for our online and mobile banking application, we implore you to do so as it will be convenient for you to make transactions such as funds transfer, airtime purchase, balance enquiry, BVN and account number enquiries and also account opening.
+                            </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div style="border:1px solid #fff; background-color:#E2ECF5; width: 110%; margin-left: -5%;border-radius: 5px 5px 0 0;">
+                            <h4 style="font-family: 'OpenSans SemiBold';color: #003366; font-size: 14px; line-height: 17px;margin-left: 5%;">Reach out to us if you have been impacted</h4>
+                        </div>
+                        <p style="
+                        text-align: left;
+                        font-family:'Campton Light';
+                        font-size: 14px;
+                        line-height: 24px;
+                        letter-spacing: 0;
+                        color: #707070;">
+                           If your business has been directly or indirectly affected by COVID-19, which has resulted in financial challenges,
+                            you can reach out to us by sending an email to <span style="color: #003366;">contactcenter@globusbank.com</span> or dialling <span style="color: #003366;">+234 1 2259000-1.</span> 
+                            We are ready to support and work with you during this difficult time.
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div style="border:1px solid #fff; background-color:#E2ECF5; width: 110%; margin-left: -5%;border-radius: 5px 5px 0 0;">
+                            <h4 style="font-family: 'OpenSans SemiBold';color: #003366; font-size: 14px; line-height: 17px;margin-left: 5%;">We will always keep you informed and updated</h4>
+                        </div>
+                        <p style="
+                        text-align: left;
+                        font-family:'Campton Light';
+                        font-size: 14px;
+                        line-height: 24px;
+                        letter-spacing: 0;
+                        color: #707070;">
+                           As we get more reports and updates about COVID-19, we will continually keep you informed and updated through emails and all our social media handles
+                           <span style="color:#003366">(@GlobusBankNG</span>– Twitter and Instagram; Globus Bank – Facebook and LinkedIn) as it concerns your safety which is our top priority.
+                             At this difficult time, we want to be there for our esteemed customers.
+                            </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p style="font-size: 14px;line-height: 24px; color: #707070; font-family: 'Campton Light';">                            
+                            Thank you for your confidence in us and choosing to bank with Globus Bank.
+                            During this time, we will ensure we give all the support we can for your safety. 
+                        </p>   
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p style="font-size: 14px;line-height: 24px; color: #003366; font-family: 'Campton Light';">
+                            Thank you once again for banking with us.
+                        </p>   
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="https://res.cloudinary.com/globusbank/image/upload/v1584702483/EmailAsset/signature_eli_sne3rh.png" style="width: 117px;">
+                        <br />
+                        <span style="color:#003366; font-family: 'Campton SemiBold'; font-size: 14px; line-height: 24px;">Elias Igbinakenzua </span><br />
+                        <p style="font-family: 'Campton Light';font-size: 14px; line-height: 24px;">Chief Executive Officer</p>
+                    </td>
+                </tr>              
+                
+            </table>
+        </div>
+        <div style="max-width: 700px;margin-bottom: 50px;">
+                <div style="height: 165px; background-image:url('https://res.cloudinary.com/globusbank/image/upload/v1584703486/EmailAsset/corona-back_ygofes.png'); color: #fff; text-align: left;padding: 20px; background-repeat: round;">
+                    
+                </div>
+                    
+        </div>
+        </center> 
+    </body>  
+
+</body>  
+</html>

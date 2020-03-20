@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+    <meta charset="utf-8"> <!-- utf-8 works for most cases -->
+    <meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
+    <meta name="x-apple-disable-message-reformatting">  <!-- Disable auto-scale in iOS 10 Mail entirely -->
+    <meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no"> <!-- Tell iOS not to automatically link certain text strings. -->
+    <title>Corona Faqs</title> <!-- The title tag shows in email notifications, like Android 4.4. -->
+
+    <!-- Web Font / @font-face : BEGIN -->
+    <!-- NOTE: If web fonts are not required, lines 10 - 27 can be safely removed. -->
+
+    <!-- Desktop Outlook chokes on web font references and defaults to Times New Roman, so we force a safe fallback font. -->
+    <!--[if mso]>
+        <style>
+            * {
+                font-family: sans-serif !important;
+            }
+        </style>
+    <![endif]-->
+
+    <!-- All other clients get the webfont reference; some will render the font and others will silently fail to the fallbacks. More on that here: http://stylecampaign.com/blog/2015/02/webfont-support-in-email/ -->
+    <!--[if !mso]><!-->
+    <!-- insert web font reference, eg: <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'> -->
+    <!--<![endif]-->
+
+    <!-- Web Font / @font-face : END -->
+
+    <!-- CSS Reset : BEGIN -->
+    <style>
+
+        /* What it does: Remove spaces around the email design added by some email clients. */
+        /* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
+        @media screen {
+            @font-face {
+            font-family: "Campton Bold";
+            src: url("https://res.cloudinary.com/globusbank/raw/upload/v1583146875/EmailAsset/fonts/Campton_Bold_j9ls8k.otf");
+            }
+
+    }
+    @font-face {
+            font-family: "Campton Bold";
+            src: url("https://res.cloudinary.com/globusbank/raw/upload/v1583146875/EmailAsset/fonts/Campton_Bold_j9ls8k.otf");
+            }
+
+            @font-face {
+                font-family: "Campton Medium";
+                src: url("https://res.cloudinary.com/globusbank/raw/upload/v1583146876/EmailAsset/fonts/Campton_Medium_p8kbew.otf");
+            }
+            @font-face {
+                font-family: "Campton Light";
+                src: url("https://res.cloudinary.com/globusbank/raw/upload/v1583146876/EmailAsset/fonts/Campton_Light_nh94cp.otf");
+            }
+        html,
+        body {
+            margin: 0 auto !important;
+            padding: 0 !important;
+            height: 100% !important;
+            width: 100% !important;
+            font-family: "Campton Light";
+        }
+        
+
+        /* What it does: Stops email clients resizing small text. */
+        * {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+        em{
+            color: #003366;
+        }
+
+        /* What it does: Centers email on Android 4.4 */
+        div[style*="margin: 16px 0"] {
+            margin: 0 !important;
+        }
+
+        /* What it does: forces Samsung Android mail clients to use the entire viewport */
+        #MessageViewBody, #MessageWebViewDiv{
+            width: 100% !important;
+        }
+
+        /* What it does: Stops Outlook from adding extra spacing to tables. */
+        table,
+        td {
+            mso-table-lspace: 0pt !important;
+            mso-table-rspace: 0pt !important;
+        }
+
+        /* What it does: Fixes webkit padding issue. */
+        table {
+            border-spacing: 0 !important;
+            border-collapse: collapse !important;
+            table-layout: fixed !important;
+            margin: 0 auto !important;
+            background-color: #fff;
+        }
+        td{
+            padding-bottom: 10px;
+            font-family: "Campton Medium";
+            
+        }
+
+        /* What it does: Uses a better rendering method when resizing images in IE. */
+        img {
+            -ms-interpolation-mode:bicubic;
+        }
+
+        /* What it does: Prevents Windows 10 Mail from underlining links despite inline CSS. Styles for underlined links should be inline. */
+        a {
+            text-decoration: none;
+        }
+
+        /* What it does: A work-around for email clients meddling in triggered links. */
+        a[x-apple-data-detectors],  /* iOS */
+        .unstyle-auto-detected-links a,
+        .aBn {
+            border-bottom: 0 !important;
+            cursor: default !important;
+            color: inherit !important;
+            text-decoration: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+        }
+
+        /* What it does: Prevents Gmail from displaying a download button on large, non-linked images. */
+        .a6S {
+            display: none !important;
+            opacity: 0.01 !important;
+        }
+
+        /* What it does: Prevents Gmail from changing the text color in conversation threads. */
+        .im {
+            color: inherit !important;
+        }
+
+        /* If the above doesn't work, add a .g-img class to any image in question. */
+        img.g-img + div {
+            display: none !important;
+        }
+
+        /* What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  */
+        /* Create one of these media queries for each additional viewport size you'd like to fix */
+
+        /* iPhone 4, 4S, 5, 5S, 5C, and 5SE */
+        @media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
+            u ~ div .email-container {
+                min-width: 320px !important;
+            }
+        }
+        /* iPhone 6, 6S, 7, 8, and X */
+        @media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
+            u ~ div .email-container {
+                min-width: 375px !important;
+            }
+        }
+        /* iPhone 6+, 7+, and 8+ */
+        @media only screen and (min-device-width: 414px) {
+            u ~ div .email-container {
+                min-width: 414px !important;
+            }
+        }
+
+    </style>
+
+    <!-- What it does: Makes background images in 72ppi Outlook render at correct size. -->
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+    </xml>
+    <![endif]-->
+
+    <!-- CSS Reset : END -->
+</head>               
+<body>
+    <body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: grey;">
+        <center style="width: 100%; background-color: grey; margin-top: 30px;">
+                <!--[if mso | IE]>
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #222222;">
+    <tr>
+    <td>
+    <![endif]-->
+
+          <!-- Create white space after the desired preview text so email clients don’t pull other distracting text into the inbox preview. Extend as necessary. -->
+        <!-- Preview Text Spacing Hack : BEGIN -->
+        <div style="display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
+	        &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+        </div>
+        <!-- Preview Text Spacing Hack : END -->
+        <div style="max-width: 600px; margin: 0 auto; border: 1px solid #70707054; padding: 50px; background-color: #fff;" class="email-container">
+            <!--[if mso]>
+            <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="600">
+            <tr>
+            <td>
+            <![endif]-->
+            
+	        <!-- Email Body : BEGIN -->
+	        <table align="" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;background-color: #fff;">
+                
+                <tr style="margin-top: 50px;">
+                    <td style="background-color: #ffffff;">
+                        <img
+                        src="https://res.cloudinary.com/globusbank/image/upload/v1573143692/EmailAsset/acct_Logo_nlw7cy.svg"
+                        style="display:block; line-height:0px; font-size:0px; border:0px;padding-right:0px;margin-bottom:30px"
+                      />
+                    </td>
+                </tr>
+                <tr style="border-top: 1px dashed #70707054; border-bottom: 1px dashed #70707054;width: 116%;
+                display: block;
+                margin-left: -50px; margin-bottom: 50px;">
+                    <td><h2 style="font-size:24px;font-family:Campton Bold;line-height:33px;color:#EB2232; margin-left: 48px; margin-top: 40px;">FAQs on COVID-19</h2></td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>
+                            <img src="https://res.cloudinary.com/globusbank/image/upload/v1584110503/EmailAsset/figures/line_nhxqvy.png" height="130px" style="position: absolute; margin-top: 10px;" />
+                       </span>
+                       <table>
+                           <tr>
+                               <td>
+                                 <h3 style="margin-left: 30px; margin-top: -20px;margin-bottom: 30px;">What is COVID-19?</h3>
+                                <p style="font-size: 14px;line-height: 24px; color: #707070; font-family: 'Campton Light';margin-left:30px;margin-top:-10px">
+                                    COVID-19 is the infectious disease caused by the most recently discovered Coronavirus. This new virus was unknown before the outbreak began in Wuhan, China, in December 2019.
+                                </p>
+                               </td>
+                               <td>
+                                   <img src="https://res.cloudinary.com/globusbank/image/upload/v1584110503/EmailAsset/figures/patient_n1qyye.png" width="155px" alt="Patient">
+                               </td>
+                           </tr>
+                       </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>
+                            <img 
+                            src="https://res.cloudinary.com/globusbank/image/upload/v1584110503/EmailAsset/figures/line_nhxqvy.png" 
+                            
+                            style="position: absolute; margin-top: 10px;margin-top: 18px;height: 100px;width: 11px;"/>
+                       </span>
+                        <h3 style="margin-left: 30px;font-size: 18px; font-family: 'Campton Medium'; line-height:19px;">What are the symptoms of COVID-19?</h3>
+                        <p style="font-size: 14px;line-height: 24px; color: #707070; font-family: 'Campton Light';margin-top: -5px;margin-left: 30px;">
+                            The most common symptoms of COVID-19 are fever, tiredness, and dry cough. Some patients may have aches and pains, nasal congestion, runny nose, sore throat or diarrhea. These symptoms are usually mild and begin gradually.
+                        </p>
+                    </td>
+                </tr> 
+                <tr>
+                    <td>
+                        <span>
+                            <img 
+                            src="https://res.cloudinary.com/globusbank/image/upload/v1584110503/EmailAsset/figures/line_nhxqvy.png"
+                             style="position: absolute; margin-top: 15px; height: 125px;"/>
+                       </span>
+                        <h3 style="margin-left: 30px;font-size: 18px; font-family: 'Campton Medium'; line-height:19px;">How Does COVID-19 Spread?</h3>
+                        <p style="font-size: 14px;line-height: 24px; color: #707070; font-family: 'Campton Light';margin-top: -5px;margin-left: 30px;">
+                The disease can spread from person to person through small droplets from the nose or mouth which are spread when a person with COVID-19 coughs or exhales. Other people then catch COVID-19 by touching these objects or surfaces, then touching their eyes, nose or mouth.
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>
+                            <img 
+                            src="https://res.cloudinary.com/globusbank/image/upload/v1584110503/EmailAsset/figures/line_nhxqvy.png"
+                             
+                             style="position: absolute; 
+                                    margin-top: 18px;
+                                    width: 11px;
+                                    height: 100px;"
+                             />
+                       </span>
+                        <h3 style="margin-left: 30px;font-size: 18px; font-family: 'Campton Medium'; line-height:19px;"> How long is the incubation period for COVID-19? </h3>
+                        <p style="font-size: 14px;line-height: 24px; color: #707070; font-family: 'Campton Light';margin-top: -5px;margin-left: 30px;">
+                           The “incubation period” means the time between catching the virus and beginning to have symptoms of the disease. Most estimates of the incubation period for COVID-19 range from 1-14 days
+                        </p>
+                    </td>
+                </tr>             
+
+                <tr>
+                    <td>
+                        <span>
+                            <img 
+                            src="https://res.cloudinary.com/globusbank/image/upload/v1584110503/EmailAsset/figures/line_nhxqvy.png"
+                             style="position: absolute; margin-top: 17px; height: 165px;"/>
+                       </span>
+                        <h3 style="margin-left: 30px;font-size: 18px; font-family: 'Campton Medium'; line-height:19px;">Are there any medicines or therapies that can prevent or cure COVID-19?</h3>
+                        <p style="font-size: 14px;line-height: 24px; color: #707070; font-family: 'Campton Light';margin-top: -5px;margin-left: 30px;">
+                            While some western, traditional or home remedies may provide comfort and alleviate symptoms of COVID-19, there is no evidence that current medicine can prevent or cure the disease. WHO does not recommend self-medication with any medicines, including antibiotics, as a prevention or cure for COVID-19. However, there are several ongoing clinical trials that include both western and traditional medicines
+                        </p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span>
+                            <img 
+                            src="https://res.cloudinary.com/globusbank/image/upload/v1584110503/EmailAsset/figures/line_nhxqvy.png" 
+                            height="260px" style="position: absolute; margin-top: 20px;"/>
+                       </span>
+                        <h3 style="margin-left: 30px;font-size: 18px; font-family: 'Campton Medium'; line-height:19px;">What can I do to protect myself and prevent the spread of the disease? </h3>
+                         <ul 
+                         style="margin-left: 5px;
+                           list-style-image: url('https://res.cloudinary.com/globusbank/image/upload/v1584114150/EmailAsset/figures/dot2_txdrua.png');
+                           color: #707070;
+                           font-family: 'Campton Light';
+                           font-size: 14px;
+                           line-height:24px;">
+                             <li style="margin-bottom: 10px;">Wash your hands often with soap and warm water.</li>
+                             <li style="margin-bottom: 10px;">Make use of hand sanitizers often.</li>
+                             <li style="margin-bottom: 10px;">Avoid touching your eyes, nose, or mouth with unwashed hands.</li>
+                             <li style="margin-bottom: 10px;">Cover your mouth and nose with a tissue or upper sleeve when coughing or sneezing. </li>
+                             <li style="margin-bottom: 10px;">Avoid contact with people who are sick. </li>
+                             <li>If you are sick, stay home, and avoid contact with others.</li>
+                         </ul>
+                    </td>
+                </tr>                          
+                <tr>
+                    <td>
+                        <p style="font-size: 14px;line-height: 24px; color: #003366; font-family: 'Campton Light';">
+                            Reference – World Health Organization (WHO)
+                        </p>   
+                    </td>
+                </tr> 
+                <tr>
+                    <td style="height: 5px;">
+
+                    </td>
+                </tr>              
+                
+            </table>
+        </div>
+        <div style="max-width: 700px;margin-bottom: 50px;">
+                <div style="height: 154px; background-image:url('https://res.cloudinary.com/globusbank/image/upload/v1583480672/EmailAsset/figures/989_cl6nof.png'); color: #fff; text-align: left;padding: 20px; background-repeat: round;">
+                    
+                </div>
+                    
+           </div>
+        </center> 
+    </body>  
+
+</body>  
+</html>
