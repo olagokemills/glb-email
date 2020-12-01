@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+    <meta charset="utf-8"> <!-- utf-8 works for most cases -->
+    <meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
+    <meta name="x-apple-disable-message-reformatting">  <!-- Disable auto-scale in iOS 10 Mail entirely -->
+    <meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no"> <!-- Tell iOS not to automatically link certain text strings. -->
+    <title>Soft Token Request</title> <!-- The title tag shows in email notifications, like Android 4.4. -->
+
+    <!-- Web Font / @font-face : BEGIN -->
+    <!-- NOTE: If web fonts are not required, lines 10 - 27 can be safely removed. -->
+
+    <!-- Desktop Outlook chokes on web font references and defaults to Times New Roman, so we force a safe fallback font. -->
+    <!--[if mso]>
+        <style>
+            * {
+                font-family: sans-serif !important;
+            }
+        </style>
+    <![endif]-->
+
+    <!-- All other clients get the webfont reference; some will render the font and others will silently fail to the fallbacks. More on that here: http://stylecampaign.com/blog/2015/02/webfont-support-in-email/ -->
+    <!--[if !mso]><!-->
+    <!-- insert web font reference, eg: <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'> -->
+    <!--<![endif]-->
+
+    <!-- Web Font / @font-face : END -->
+
+    <!-- CSS Reset : BEGIN -->
+    <style>
+
+        /* What it does: Remove spaces around the email design added by some email clients. */
+        /* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
+        @media screen {
+            @font-face {
+            font-family: "Campton Bold";
+            src: url("https://res.cloudinary.com/globusbank/raw/upload/v1583146875/EmailAsset/fonts/Campton_Bold_j9ls8k.otf");
+            }
+
+    }
+    @font-face {
+            font-family: "Campton Bold";
+            src: url("https://res.cloudinary.com/globusbank/raw/upload/v1583146875/EmailAsset/fonts/Campton_Bold_j9ls8k.otf");
+            }
+
+            @font-face {
+                font-family: "Campton Medium";
+                src: url("https://res.cloudinary.com/globusbank/raw/upload/v1583146876/EmailAsset/fonts/Campton_Medium_p8kbew.otf");
+            }
+            @font-face {
+                font-family: "Campton Light";
+                src: url("https://res.cloudinary.com/globusbank/raw/upload/v1583146876/EmailAsset/fonts/Campton_Light_nh94cp.otf");
+            }
+            @font-face{
+                font-family:"Campton SemiBold";
+                src: url("https://res.cloudinary.com/globusbank/raw/upload/v1583146876/EmailAsset/fonts/Campton_SemiBold_dimdq0.otf")
+            }
+        html,
+        body {
+            margin: 0 auto !important;
+            padding: 0 !important;
+            height: 100% !important;
+            width: 100% !important;
+            font-family: "Campton Light";
+        }
+        
+
+        /* What it does: Stops email clients resizing small text. */
+        * {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+        em{
+            color: #003366;
+        }
+
+        /* What it does: Centers email on Android 4.4 */
+        div[style*="margin: 16px 0"] {
+            margin: 0 !important;
+        }
+
+        /* What it does: forces Samsung Android mail clients to use the entire viewport */
+        #MessageViewBody, #MessageWebViewDiv{
+            width: 100% !important;
+        }
+
+        /* What it does: Stops Outlook from adding extra spacing to tables. */
+        table,
+        td {
+            mso-table-lspace: 0pt !important;
+            mso-table-rspace: 0pt !important;
+        }
+
+        /* What it does: Fixes webkit padding issue. */
+        table {
+            border-spacing: 0 !important;
+            border-collapse: collapse !important;
+            table-layout: fixed !important;
+            margin: 0 auto !important;
+            background-color: #fff;
+        }
+        td{
+            /* padding-bottom: 10px; */
+            font-family: "Campton Medium";
+            
+        }
+
+        /* What it does: Uses a better rendering method when resizing images in IE. */
+        img {
+            -ms-interpolation-mode:bicubic;
+        }
+
+        /* What it does: Prevents Windows 10 Mail from underlining links despite inline CSS. Styles for underlined links should be inline. */
+        a {
+            text-decoration: none;
+        }
+
+        /* What it does: A work-around for email clients meddling in triggered links. */
+        a[x-apple-data-detectors],  /* iOS */
+        .unstyle-auto-detected-links a,
+        .aBn {
+            border-bottom: 0 !important;
+            cursor: default !important;
+            color: inherit !important;
+            text-decoration: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+        }
+
+        /* What it does: Prevents Gmail from displaying a download button on large, non-linked images. */
+        .a6S {
+            display: none !important;
+            opacity: 0.01 !important;
+        }
+
+        /* What it does: Prevents Gmail from changing the text color in conversation threads. */
+        .im {
+            color: inherit !important;
+        }
+
+        /* If the above doesn't work, add a .g-img class to any image in question. */
+        img.g-img + div {
+            display: none !important;
+        }
+
+        /* What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  */
+        /* Create one of these media queries for each additional viewport size you'd like to fix */
+
+        /* iPhone 4, 4S, 5, 5S, 5C, and 5SE */
+        @media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
+            u ~ div .email-container {
+                min-width: 320px !important;
+            }
+        }
+        /* iPhone 6, 6S, 7, 8, and X */
+        @media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
+            u ~ div .email-container {
+                min-width: 375px !important;
+            }
+        }
+        /* iPhone 6+, 7+, and 8+ */
+        @media only screen and (min-device-width: 414px) {
+            u ~ div .email-container {
+                min-width: 414px !important;
+            }
+        }
+
+    </style>
+
+    <!-- What it does: Makes background images in 72ppi Outlook render at correct size. -->
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+    </xml>
+    <![endif]-->
+
+    <!-- CSS Reset : END -->
+</head>               
+<body>
+    <body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #fff;">
+        <center style="width: 100%; background-color: #fff; margin-top: 30px;">
+                <!--[if mso | IE]>
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #222222;">
+    <tr>
+    <td>
+    <![endif]-->
+
+          <!-- Create white space after the desired preview text so email clients don’t pull other distracting text into the inbox preview. Extend as necessary. -->
+        <!-- Preview Text Spacing Hack : BEGIN -->
+        <div style="display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
+	        &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+        </div>
+        <!-- Preview Text Spacing Hack : END -->
+        <div style="max-width: 700px; margin: 0 auto; border: 1px solid #70707054; padding: 50px; background-color: #fff;padding-bottom: 20px !important;" class="email-container">
+            <!--[if mso]>
+            <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="600">
+            <tr>
+            <td>
+            <![endif]-->
+            
+	        <!-- Email Body : BEGIN -->
+	        <table align="" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;background-color: #fff;">
+                
+                <tr style="margin-top: 50px;">
+                    <td style="background-color: #ffffff;">
+                        <img
+                        src="https://res.cloudinary.com/globusbank/image/upload/v1586429662/EmailAsset/ISOP%20Assets/Logo_2x_shcwxh.png"
+                        style="display:block; line-height:0px; font-size:0px; border:0px;padding-right:0px; width: 222px;"
+                      />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div style=" max-width: 800px;border-top:1px dashed #707070; border-bottom: 1px dashed #707070;border-left:1px solid #70707054;border-right: 1px solid #70707054;">
+            <div style="max-width:700px">
+                <table align="" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;background-color: #fff;">
+                    <tr>
+                        <td>
+                            <h3 style="font-family:'Campton Bold'; font-size: 24px;line-height: 33px; color: #003366;">
+                                Customer Down Payment
+                            </h3>
+                        </td>
+                        <td>
+                            <img
+                        src="https://res.cloudinary.com/globusbank/image/upload/v1586429661/EmailAsset/ISOP%20Assets/Image_3_2x_n1xdok.png"
+                        style="display:block; line-height:0px; font-size:0px; border:0px;padding-right:0px; width:98px; margin-left:20px;"
+                            />
+                        </td>
+                    </tr>
+                </table>
+            </div>            
+        </div>
+        <div style="background-color:#E2ECF5;max-width: 800px;border-left:1px solid #70707054;border-right: 1px solid #70707054;">
+            <div style="max-width:700px">
+                <table align="" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;background-color: #E2ECF5;">
+                    <tr>
+                        <td>
+                            <h5 style="font-family:'Campton Light'; font-size: 18px;line-height: 25px; color: #101010;">
+                                Customer Order Fulfillment
+                            </h5>
+                        </td>
+                        <td>
+                            <h5 style="font-family:'Campton Light'; font-size: 18px;line-height: 25px; color: #101010;margin-left:20px;">10-3-2020</h5>
+                        </td>
+                    </tr>
+                </table>
+            </div>            
+        </div>
+        <div style="max-width: 800px;border-left:1px solid #70707054;border-right: 1px solid #70707054;">
+            <div style="max-width:700px">
+                <table align="" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto">
+                    <tr>
+                        <td>
+                            <p style="font-family:'Campton Light'; font-size:16px;"> Customer Name </p>
+                        </td>
+                        <td>
+                            <h5 style="font-family:'Campton SemiBold'; font-size:16px;margin-left:20px;">C AND S CEMENT</h5>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p style="font-family:'Campton Light'; font-size:16px;"> Customer Address </p>
+                        </td>
+                        <td>
+                            <p style="font-family:'Campton SemiBold'; font-size:16px;;margin-left: 20px;">"AGU AEKA OF AWKA - OJI RD</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p style="font-family:'Campton Light'; font-size:16px;">Country</p>
+                        </td>
+                        <td>
+                            <p style="font-family:'Campton SemiBold'; font-size:16px; margin-left:20px;">NG</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p style="font-family:'Campton Light'; font-size:16px;">Region</p>
+                        </td>
+                        <td>
+                            <p style="font-family:'Campton SemiBold'; font-size:16px; margin-left:20px;">ANAMBRA</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>            
+        </div>
+        <div style="max-width: 800px;border-top:1px dashed #707070; border-left:1px solid #70707054;border-right: 1px solid #70707054;">
+            <div style="max-width:700px;margin-top:10px;">
+                <table align="" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto">
+                    <tr>
+                        <td>
+                            <p style="font-family:'Campton Light'; font-size:16px;margin-right: 10px;">Teller Number</p>
+                        </td>
+                        <td>
+                            <p style="font-family:'Campton SemiBold'; font-size:16px;margin-left:20px;">7329401841</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p style="font-family:'Campton Light'; font-size:16px;">Transaction ID</p>
+                        </td>
+                        <td>
+                            <p style="font-family:'Campton SemiBold'; font-size:16px;margin-left:20px;">7329401841</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p style="font-family:'Campton Light'; font-size:16px;">Company Code</p>
+                        </td>
+                        <td>
+                            <p style="font-family:'Campton SemiBold'; font-size:16px; margin-left:20px;">1000</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p style="font-family:'Campton Light'; font-size:16px;">Payment Document</p>
+                        </td>
+                        <td>
+                            <p style="font-family:'Campton SemiBold'; font-size:16px; margin-left:20px;">1400000598</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p style="font-family:'Campton Light'; font-size:16px;">Parent ATC Document</p>
+                        </td>
+                        <td>
+                            <p style="font-family:'Campton SemiBold'; font-size:16px;margin-left:20px;">ANAMBRA</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p style="font-family:'Campton Light'; font-size:16px;">Order Status</p>
+                        </td>
+                        <td>
+                            <p style="font-family:'Campton SemiBold'; font-size:16px;margin-left:20px;">Total ATC Created: 4 Out of 4</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p style="font-family:'Campton Light'; font-size:16px;">Fiscal Year</p>
+                        </td>
+                        <td>
+                            <p style="font-family:'Campton SemiBold'; font-size:16px;margin-left:20px;">2017</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p style="font-family:'Campton Light'; font-size:16px;">Status</p>
+                        </td>
+                        <td>
+                            <p style="font-family:'Campton SemiBold'; font-size:16px;margin-left:20px;">Successful</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p style="font-family:'Campton Light'; font-size:16px;line-height:45px">Amount</p>
+                        </td>
+                        <td>
+                            <p style="font-family:'Campton SemiBold'; font-size:16px;line-height:45px;margin-left:20px;">NGN 5,821,142.86</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>            
+        </div>
+        <div style="max-width: 800px;">
+            <center style="background-color: #E2ECF5; padding: 40px; font-family: 'Campton Light';font-weight: bolder; font-size: 15px; line-height: 20px; color: #003366;">
+                <p style="margin: 0; text-align: center;">00010028722017100300000154014</p>
+                <br>                
+                <img
+                    src="https://res.cloudinary.com/globusbank/image/upload/v1586429584/EmailAsset/ISOP%20Assets/Group_4657_2x_fpfkhq.png"
+                    style="display:block; line-height:0px; font-size:0px; border:0px;padding-right:0px; width:347px;"
+                 />
+                    <p style="color: #222222;">
+                       Globus bank, Lead the Change 
+                    </p>
+            </center>                  
+           </div>
+           <div style="max-width: 800px;background-image:url('https://res.cloudinary.com/globusbank/image/upload/v1586429726/EmailAsset/ISOP%20Assets/footer_bg_2x_tuodpz.png'); background-color: #054E96;color: #FFFFFF;">
+                <div style="max-width:700px;padding: 40px;">
+                    <table align="" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;background-color: inherit;">
+                        <tr>
+                            <td style="font-family: 'Campton Light';font-size: 14px;padding-bottom: 15px;">
+                                <img 
+                                src="https://res.cloudinary.com/globusbank/image/upload/v1586429410/EmailAsset/ISOP%20Assets/telephone_2x_dc7agj.png" width="16px">
+                                &nbsp;
+                               <a>+234 1 2259000-1
+                               </a> 
+                            </td>
+                            <td style="font-family: 'Campton Light';font-size: 14px;padding-bottom: 15px;">
+                                <img 
+                                src="https://res.cloudinary.com/globusbank/image/upload/v1586429410/EmailAsset/ISOP%20Assets/facebook_2x_wpgbzb.png" width="16px">
+                                <img
+                                src="https://res.cloudinary.com/globusbank/image/upload/v1586429410/EmailAsset/ISOP%20Assets/linkd_in_2x_rm9gxd.png" width="16px">
+                                &nbsp;
+                                Globus Bank
+                            </td>
+                            <td>
+                                &nbsp;&nbsp;&nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-family: 'Campton Light';font-size: 12px;padding-bottom: 15px;">
+                                <img 
+                                src="https://res.cloudinary.com/globusbank/image/upload/v1586429410/EmailAsset/ISOP%20Assets/Email_2x_euflpk.png" width="16px">
+                                contactcenter@globusbank.com
+                            </td>
+                            <td style="font-family: 'Campton Light';font-size: 14px;padding-bottom: 15px;">
+                              <span>
+                                  <img 
+                                src="https://res.cloudinary.com/globusbank/image/upload/v1586429410/EmailAsset/ISOP%20Assets/twitter_2x_ml5tlw.png" width="16px">
+                                <img
+                                src="https://res.cloudinary.com/globusbank/image/upload/v1586429410/EmailAsset/ISOP%20Assets/insta_2x_mep5j8.png" width="16px">
+                              </span>  
+                                &nbsp;
+                                <span>@GlobusBankNG</span>
+                            </td>
+                            <td style="font-family: 'Campton Light';font-size: 14px;padding-bottom: 15px;">
+                                <img
+                                src="https://res.cloudinary.com/globusbank/image/upload/v1586429410/EmailAsset/ISOP%20Assets/web_2x_srxckh.png" width="16px">
+                                &nbsp;
+                                www.globusbank.com
+                            </td>
+                        </tr>
+                    </table>
+                </div>            
+            </div>
+            <div style="max-width: 800px;background-color:#003366;">
+                <div style="max-width: 700px;padding: 5px;">
+                    <p style="text-align: left;color: #ffffff;font-family: 'Campton Light';"> © 2019 Globus Bank  </p>              
+                </div>
+            </div>
+        </center> 
+    </body>  
+
+</body>  
+</html>
